@@ -1,32 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://m486htignv87"]
+[gd_scene load_steps=4 format=3 uid="uid://m486htignv87"]
 
 [ext_resource type="Script" uid="uid://dkstly3mixwaw" path="res://scripts/player.gd" id="1_dovo2"]
-[ext_resource type="Texture2D" uid="uid://0qjimirr5g03" path="res://assets/dodge_the_creeps_2d_assets/art/playerGrey_walk1.png" id="2_gmlin"]
-[ext_resource type="Texture2D" uid="uid://clx272bgfmu7m" path="res://assets/dodge_the_creeps_2d_assets/art/playerGrey_walk2.png" id="3_lvxji"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8afob"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h00vy"]
-radius = 15.0333
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_p47bc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_gmlin")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_lvxji")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+radius = 22.0227
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dovo2")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(50, 50)
+texture = SubResource("PlaceholderTexture2D_8afob")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_h00vy")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_p47bc")
-frame_progress = 0.807341

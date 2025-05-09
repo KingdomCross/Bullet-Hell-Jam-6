@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwx57y47fk1r"]
+
+[ext_resource type="Texture2D" uid="uid://dca4td41ny47b" path="res://assets/Sprite-basic-bullet.png" id="1_sgtus"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sgtus"]
+radius = 87.023
+
+[node name="Basic Bullet" type="RigidBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sgtus")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sgtus")

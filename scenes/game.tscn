@@ -1,10 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://bd530v7i71lo"]
+[gd_scene load_steps=3 format=3 uid="uid://bd530v7i71lo"]
 
 [ext_resource type="PackedScene" uid="uid://m486htignv87" path="res://scenes/player/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://cbt6mgb1h2kit" path="res://scenes/enemy/mob.tscn" id="2_yqjtg"]
 
 [node name="Game" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(36, 16)
+position = Vector2(-3, 207)
+
+[node name="Mob" parent="." instance=ExtResource("2_yqjtg")]
+position = Vector2(-142, -179)
 
 [node name="Camera2D" type="Camera2D" parent="."]

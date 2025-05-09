@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbt6mgb1h2kit"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bcl5k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_46v34"]
+radius = 22.0
+
+[node name="Mob" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(50, 50)
+texture = SubResource("PlaceholderTexture2D_bcl5k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_46v34")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

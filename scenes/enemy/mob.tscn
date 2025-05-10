@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbt6mgb1h2kit"]
+[gd_scene load_steps=7 format=3 uid="uid://cbt6mgb1h2kit"]
 
 [ext_resource type="Script" uid="uid://dxtl7xxnk8mw" path="res://scripts/mob.gd" id="1_n3r10"]
 [ext_resource type="PackedScene" uid="uid://dwx57y47fk1r" path="res://scenes/bullets/basic bullet.tscn" id="2_doccl"]
+[ext_resource type="Script" uid="uid://d2sqj18cir2r5" path="res://scripts/finite_state_machine.gd" id="3_sbfgl"]
+[ext_resource type="Script" uid="uid://c356yep5l0if1" path="res://scripts/state.gd" id="4_46v34"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bcl5k"]
 
@@ -16,7 +18,39 @@ bullet_node = ExtResource("2_doccl")
 scale = Vector2(50, 50)
 texture = SubResource("PlaceholderTexture2D_bcl5k")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Speed" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Duration" type="Timer" parent="."]
+
+[node name="debug" type="Label" parent="."]
+offset_left = -25.0
+offset_top = -54.0
+offset_right = 24.0
+offset_bottom = -31.0
+text = "debug"
+
+[node name="PlayerDetection" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
 shape = SubResource("CircleShape2D_46v34")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+[node name="FiniteStateMachine" type="Node2D" parent="."]
+script = ExtResource("3_sbfgl")
+
+[node name="Idle" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("4_46v34")
+
+[node name="5Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("4_46v34")
+
+[node name="4Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("4_46v34")
+
+[node name="3Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("4_46v34")
+
+[node name="2Leaf" type="Node2D" parent="FiniteStateMachine"]
+script = ExtResource("4_46v34")
+
+[connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]

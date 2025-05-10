@@ -7,7 +7,7 @@
 radius = 92.0217
 
 [node name="Basic Bullet" type="Area2D"]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.2, 0.2)
 script = ExtResource("1_awmao")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

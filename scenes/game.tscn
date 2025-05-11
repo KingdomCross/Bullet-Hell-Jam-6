@@ -9,7 +9,7 @@
 position = Vector2(-3, 207)
 
 [node name="Mob" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(-142, -179)
+position = Vector2(-106, 5)
 alpha = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]

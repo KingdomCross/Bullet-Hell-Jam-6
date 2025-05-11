@@ -1,16 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbt6mgb1h2kit"]
+[gd_scene load_steps=11 format=3 uid="uid://cbt6mgb1h2kit"]
 
 [ext_resource type="Script" uid="uid://dxtl7xxnk8mw" path="res://scripts/mob.gd" id="1_n3r10"]
 [ext_resource type="PackedScene" uid="uid://dwx57y47fk1r" path="res://scenes/bullets/basic bullet.tscn" id="2_doccl"]
 [ext_resource type="Script" uid="uid://d2sqj18cir2r5" path="res://scripts/finite_state_machine.gd" id="3_sbfgl"]
-[ext_resource type="Script" uid="uid://c356yep5l0if1" path="res://scripts/state.gd" id="4_46v34"]
+[ext_resource type="Script" uid="uid://bwpncfo28fe1v" path="res://scripts/idle.gd" id="4_2syi3"]
+[ext_resource type="Script" uid="uid://cpfa72mqr1kvg" path="res://scripts/5_leaf.gd" id="5_2syi3"]
+[ext_resource type="Script" uid="uid://cby7sayg6go4g" path="res://scripts/4_leaf.gd" id="6_11kqc"]
+[ext_resource type="Script" uid="uid://c1vtlotu15nog" path="res://scripts/3_leaf.gd" id="7_sero7"]
+[ext_resource type="Script" uid="uid://bvbqswmkk518o" path="res://scripts/2_leaf.gd" id="8_sero7"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bcl5k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_46v34"]
-radius = 22.0
+radius = 139.0
 
-[node name="Mob" type="CharacterBody2D"]
+[node name="mob" type="CharacterBody2D"]
 script = ExtResource("1_n3r10")
 bullet_node = ExtResource("2_doccl")
 
@@ -19,9 +23,11 @@ scale = Vector2(50, 50)
 texture = SubResource("PlaceholderTexture2D_bcl5k")
 
 [node name="Speed" type="Timer" parent="."]
-wait_time = 0.3
+wait_time = 0.1
 
 [node name="Duration" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
 
 [node name="debug" type="Label" parent="."]
 offset_left = -25.0
@@ -33,24 +39,26 @@ text = "debug"
 [node name="PlayerDetection" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection"]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_46v34")
 
 [node name="FiniteStateMachine" type="Node2D" parent="."]
 script = ExtResource("3_sbfgl")
 
 [node name="Idle" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("4_46v34")
+script = ExtResource("4_2syi3")
 
 [node name="5Leaf" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("4_46v34")
+script = ExtResource("5_2syi3")
 
 [node name="4Leaf" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("4_46v34")
+script = ExtResource("6_11kqc")
 
 [node name="3Leaf" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("4_46v34")
+script = ExtResource("7_sero7")
 
 [node name="2Leaf" type="Node2D" parent="FiniteStateMachine"]
-script = ExtResource("4_46v34")
+script = ExtResource("8_sero7")
 
 [connection signal="timeout" from="Speed" to="." method="_on_speed_timeout"]
+[connection signal="body_entered" from="PlayerDetection" to="FiniteStateMachine/Idle" method="_on_player_entered"]

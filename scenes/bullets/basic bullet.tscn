@@ -7,9 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cdiiitlx4kasa" path="res://assets/Sprite-yellow-bullet.png" id="5_0ulk6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sgtus"]
-radius = 92.0217
+radius = 50.2494
 
 [node name="Basic Bullet" type="Area2D"]
+show_behind_parent = true
 scale = Vector2(0.2, 0.2)
 script = ExtResource("1_awmao")
 texture_array = Array[Texture2D]([ExtResource("2_t6tis"), ExtResource("3_iokkt"), ExtResource("4_hdlmd"), ExtResource("5_0ulk6")])
@@ -18,6 +19,7 @@ texture_array = Array[Texture2D]([ExtResource("2_t6tis"), ExtResource("3_iokkt")
 texture = ExtResource("2_t6tis")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, -10)
 shape = SubResource("CircleShape2D_sgtus")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]

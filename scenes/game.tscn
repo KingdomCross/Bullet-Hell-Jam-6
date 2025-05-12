@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bd530v7i71lo"]
+[gd_scene load_steps=5 format=3 uid="uid://bd530v7i71lo"]
 
 [ext_resource type="PackedScene" uid="uid://m486htignv87" path="res://scenes/player/player.tscn" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cbt6mgb1h2kit" path="res://scenes/enemy/mob.tscn" id="2_yqjtg"]
+[ext_resource type="AudioStream" uid="uid://nbfyvsqd2tca" path="res://assets/bullet hell.mp3" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://v5klbj8kmtex" path="res://scenes/door level.tscn" id="5_p57ef"]
 
 [node name="Game" type="Node2D"]
 
@@ -9,7 +11,46 @@
 position = Vector2(-3, 207)
 
 [node name="Mob" parent="." instance=ExtResource("2_yqjtg")]
-position = Vector2(-106, 5)
+position = Vector2(-140, -170)
 alpha = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_lnu2h")
+autoplay = true
+
+[node name="DoorLevel" parent="." node_paths=PackedStringArray("victory_text", "score_label", "mob", "player") instance=ExtResource("5_p57ef")]
+victory_text = NodePath("../VictoryLabel")
+score_label = NodePath("../ScoreLabel")
+mob = NodePath("../Mob")
+player = NodePath("../Player")
+
+[node name="VictoryLabel" type="Label" parent="."]
+visible = false
+offset_left = 75.0
+offset_top = -219.0
+offset_right = 379.0
+offset_bottom = -71.0
+theme_override_font_sizes/font_size = 50
+text = "Victory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="."]
+offset_left = -453.0
+offset_top = 95.0
+offset_right = -201.0
+offset_bottom = 164.0
+theme_override_font_sizes/font_size = 50
+text = "0"
+vertical_alignment = 1
+
+[node name="TotalLabel" type="Label" parent="."]
+offset_left = -428.0
+offset_top = 164.0
+offset_right = -111.0
+offset_bottom = 233.0
+theme_override_font_sizes/font_size = 50
+text = "= 12"
+vertical_alignment = 1

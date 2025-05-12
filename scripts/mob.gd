@@ -1,10 +1,18 @@
 extends CharacterBody2D
 
+const SPEED = 51.0
+var flip = 1
 var theta: float = 0.0
+var character_direction : Vector2
 @export_range(0,2*PI) var alpha: float = 0.0
 
 @export var bullet_node: PackedScene
 var bullet_type: int = 0
+
+func _physics_process(delta: float) -> void:
+	position.x += SPEED * flip * delta
+	move_and_slide()
+
 
 func get_vector(angle):
 	theta = angle + alpha
@@ -22,3 +30,7 @@ func shoot(angle):
 
 func _on_speed_timeout() -> void:
 	shoot(theta)
+
+
+func _on_path_timeout() -> void:
+	flip = flip * -1

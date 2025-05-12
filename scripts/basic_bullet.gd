@@ -2,7 +2,7 @@ extends Area2D
 
 @export var texture_array : Array[Texture2D]
 
-const SPEED = 100
+var SPEED = 100
 var direction = Vector2.RIGHT
 var bullet_type: int = 0
 

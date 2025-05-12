@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://v5klbj8kmtex"]
+
+[ext_resource type="Script" uid="uid://bqwk28ern82p0" path="res://scripts/finite_door_machine.gd" id="1_huqut"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbh2o"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vr7k4"]
+
+[node name="FiniteDoorMachine" type="Node2D"]
+script = ExtResource("1_huqut")
+
+[node name="DoorLevel" type="Area2D" parent="."]
+position = Vector2(200, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLevel"]
+shape = SubResource("RectangleShape2D_hbh2o")
+
+[node name="Sprite2D" type="Sprite2D" parent="DoorLevel"]
+rotation = 0.785398
+scale = Vector2(20, 20)
+texture = SubResource("PlaceholderTexture2D_vr7k4")
+
+[node name="DoorLevel2" type="Area2D" parent="."]
+position = Vector2(-100, -200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLevel2"]
+shape = SubResource("RectangleShape2D_hbh2o")
+
+[node name="Sprite2D" type="Sprite2D" parent="DoorLevel2"]
+visible = false
+rotation = 0.785398
+scale = Vector2(20, 20)
+texture = SubResource("PlaceholderTexture2D_vr7k4")
+
+[node name="DoorLevel3" type="Area2D" parent="."]
+position = Vector2(-150, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLevel3"]
+shape = SubResource("RectangleShape2D_hbh2o")
+
+[node name="Sprite2D" type="Sprite2D" parent="DoorLevel3"]
+visible = false
+rotation = 0.785398
+scale = Vector2(20, 20)
+texture = SubResource("PlaceholderTexture2D_vr7k4")
+
+[node name="DoorLevel4" type="Area2D" parent="."]
+position = Vector2(60, 170)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorLevel4"]
+shape = SubResource("RectangleShape2D_hbh2o")
+
+[node name="Sprite2D" type="Sprite2D" parent="DoorLevel4"]
+visible = false
+rotation = 0.785398
+scale = Vector2(20, 20)
+texture = SubResource("PlaceholderTexture2D_vr7k4")
+
+[connection signal="body_entered" from="DoorLevel" to="." method="_on_door_level_body_entered"]
+[connection signal="body_entered" from="DoorLevel2" to="." method="_on_door_level_2_body_entered"]
+[connection signal="body_entered" from="DoorLevel3" to="." method="_on_door_level_3_body_entered"]
+[connection signal="body_entered" from="DoorLevel4" to="." method="_on_door_level_4_body_entered"]
